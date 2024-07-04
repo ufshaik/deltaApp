@@ -1,0 +1,8 @@
+<mat-form-field appearance="outline">
+  <mat-label>Select Subdivision</mat-label>
+  <mat-select (selectionChange)="onSubdivisionChange($event.value)" [disabled]="subdivisions.length <= 0">
+    <mat-option *ngFor="let subdivision of subdivisions" [value]="subdivision.isoCode">
+      {{ subdivision.name[0].text }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
