@@ -19,6 +19,11 @@ export class ApiService {
       .pipe(tap( (data: any) => {this.cache.set('countries', of(data)) })); // Cache the result
   }
 
+  subDivisionFilter(data : any){
+    if(data.length > 0 && !data[0].hasOwnProperty('isoCode')) data = []
+    return data
+  }
+
   getSubdivisions(countryIsoCode: string) : Observable<any> {
     const cacheKey = `subdivisions-${countryIsoCode}`;
     const cachedData = this.cache.get(cacheKey);
@@ -28,8 +33,7 @@ export class ApiService {
     return this.http.get('https://openholidaysapi.org/Subdivisions', {
       params: {countryIsoCode}
     }).pipe(tap((data:any) => {
-      if(data.length > 0 && !data[0].hasOwnProperty('isoCode')) data = []
-       this.cache.set(cacheKey, of(data))
+        this.cache.set(cacheKey, of(this.subDivisionFilter(data)))
     }));
   }
 

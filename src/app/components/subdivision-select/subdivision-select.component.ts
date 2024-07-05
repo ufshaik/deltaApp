@@ -40,7 +40,7 @@ export class SubdivisionSelectComponent implements OnInit {
 
     this.apiService.getSubdivisions(this.countryIsoCode).subscribe({
       next: (data: any) => {
-        this.subdivisions = data;
+        this.subdivisions = this.apiService.subDivisionFilter(data);
       },
       error: (err) => console.error(err)
     });
