@@ -54,6 +54,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // No need for initial country fetch here, it's done in country-select, remove this
+    console.log("V1")
   }
 
   onCountrySelected(isoCode: string) {
