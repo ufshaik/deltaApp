@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
   onSubmit() {
     this.loaderHolidays = true;
     // Ensure all parameters are selected before submitting
-    if (!this.country ||  this.validFrom <= new Date(0) || this.validTo <= new Date(0) || this.validFrom > this.validTo) {
+    if (!this.country ||  this.validFrom <= new Date(0) || this.validTo <= new Date(0) || this.validFrom >= this.validTo) {
       // Handle the case where not all parameters are filled (e.g., show an error message)
       // If subdivision is empty, the params will go empty and wouldn't mess with response
       this.loaderHolidays = false;
